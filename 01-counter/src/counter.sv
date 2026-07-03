@@ -1,3 +1,4 @@
+// Code your design here
 /**
 * updown_counter:
 * A simple up/down counter with load functionality.
@@ -18,8 +19,22 @@ module updown_counter(
     input logic [3:0] d_in,// Input data for loading
     output logic [3:0] count // Counter output
 );
-
+  always @(posedge clk or negedge rst_n)
+    begin
+      if (!rst_n)
+        count <= 0;
+      else if (load)
+        count <= d_in;
+      else if (enable)
+      begin
+      
+         if (up_down) //up count
+            count <= count + 1;
+          else
+             count <= count - 1;
+    end
+    end
+  
 
 endmodule
-
 
